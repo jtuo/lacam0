@@ -68,6 +68,11 @@ bool PIBT::funcPIBT(const int i, const Config &Q_from, Config &Q_to)
 {
   const auto K = Q_from[i]->neighbors.size();
 
+  // Resize working arrays to accommodate K+1 actions (K neighbors + wait)
+  C_cost.resize(K + 1);
+  C_next[i].resize(K + 1);
+  C_indices[i].resize(K + 1);
+
   // hindrance preparation
   int num_neighbor_agents = 0;
   static std::array<int, 4> neighbor_agents;

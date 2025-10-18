@@ -40,9 +40,9 @@ struct PIBT {
   const int NO_AGENT;
   std::vector<int> occupied_now;                 // for quick collision checking
   std::vector<int> occupied_next;                // for quick collision checking
-  std::vector<std::array<Vertex *, 5> > C_next;  // next location candidates
-  std::array<PIBTHeuristic, 5> C_cost;           // action cost
-  std::vector<std::array<int, 5> > C_indices;    // action index
+  std::vector<std::vector<Vertex *>> C_next;     // next location candidates (dynamic per agent)
+  std::vector<PIBTHeuristic> C_cost;             // action cost (resized per call)
+  std::vector<std::vector<int>> C_indices;       // action index (dynamic per agent)
 
   // hyper parameters
   static bool SWAP;
