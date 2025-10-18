@@ -2,6 +2,14 @@
 
 Instance::~Instance() {}
 
+Instance::Instance(Graph *_G, const Config &_starts, const Config &_goals)
+    : G(*_G),
+      starts(_starts),
+      goals(_goals),
+      N(_starts.size())
+{
+}
+
 Instance::Instance(const std::string &map_filename,
                    const std::vector<int> &start_indexes,
                    const std::vector<int> &goal_indexes)
